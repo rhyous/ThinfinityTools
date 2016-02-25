@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:ThinRDP.Profiles" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="urn:ThinRDP.Common" xmlns:ns1="urn:ThinRDPWS.Admin.Intf" name="IWSThinRDPservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ThinRDPWS.Admin.Intf">
+      <xs:complexType name="WSProfileArray">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence />
+            <xs:attribute xmlns:n1="http://schemas.xmlsoap.org/wsdl/" n1:arrayType="ns1:WSProfile[]" ref="soapenc:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="WSProfile">
+        <xs:sequence>
+          <xs:element name="ID" type="xs:string" />
+          <xs:element name="Name" type="xs:string" />
+          <xs:element name="Enabled" type="xs:boolean" />
+          <xs:element name="Unrestricted" type="xs:boolean" />
+          <xs:element name="GuestAllowed" type="xs:boolean" />
+          <xs:element name="IsBuiltIn" type="xs:boolean" />
+          <xs:element name="PublicKey" type="xs:string" />
+          <xs:element name="IconData" type="xs:string" />
+          <xs:element name="VirtualPath" type="xs:string" />
+          <xs:element name="Kind" type="ns2:TProfileKind" />
+          <xs:element name="WebLink" type="xs:string" />
+          <xs:element name="RdWebUrl" type="xs:string" />
+          <xs:element name="Computer" type="xs:string" />
+          <xs:element name="Credentials" type="ns3:TRdpCredentials" />
+          <xs:element name="LogonUserName" type="xs:string" />
+          <xs:element name="LogonPassword" type="xs:string" />
+          <xs:element name="ScreenResolution" type="ns3:TRdpScreenResolution" />
+          <xs:element name="ScreenWidth" type="xs:int" />
+          <xs:element name="ScreenHeight" type="xs:int" />
+          <xs:element name="BPP" type="ns3:TRdpScreenBPP" />
+          <xs:element name="ImageQuality" type="ns3:TRdpImageQuality" />
+          <xs:element name="UnicodeKbd" type="xs:boolean" />
+          <xs:element name="ConsoleSession" type="xs:boolean" />
+          <xs:element name="WebsocketCompression" type="xs:boolean" />
+          <xs:element name="RelativeMouseTouch" type="xs:boolean" />
+          <xs:element name="KeyboardLayout" type="xs:int" />
+          <xs:element name="DisableNLA" type="xs:boolean" />
+          <xs:element name="DragDistance" type="xs:int" />
+          <xs:element name="ShowOnStart" type="xs:boolean" />
+          <xs:element name="PersistentCache" type="xs:boolean" />
+          <xs:element name="EnableRemoteFx" type="xs:boolean" />
+          <xs:element name="EnableTouchRedirection" type="xs:boolean" />
+          <xs:element name="TouchDragDelay" type="xs:int" />
+          <xs:element name="SaveRDSessions" type="xs:boolean" />
+          <xs:element name="SmartSizing" type="xs:boolean" />
+          <xs:element name="AppMode" type="ns3:TRdpAppMode" />
+          <xs:element name="AppCmdLine" type="xs:string" />
+          <xs:element name="AppCmdArgs" type="xs:string" />
+          <xs:element name="AppWorkDir" type="xs:string" />
+          <xs:element name="DesktopBackground" type="xs:boolean" />
+          <xs:element name="VisualStyles" type="xs:boolean" />
+          <xs:element name="MenuAnimation" type="xs:boolean" />
+          <xs:element name="FontSmoothing" type="xs:boolean" />
+          <xs:element name="ShowWindowOnDrag" type="xs:boolean" />
+          <xs:element name="DesktopComposition" type="xs:boolean" />
+          <xs:element name="VirtualMachineID" type="xs:string" />
+          <xs:element name="RDSCollectionURL" type="xs:string" />
+          <xs:element name="Clipboard" type="xs:boolean" />
+          <xs:element name="PrinterEnabled" type="xs:boolean" />
+          <xs:element name="PrinterSetAsDefault" type="xs:boolean" />
+          <xs:element name="PrinterName" type="xs:string" />
+          <xs:element name="PrinterDriver" type="xs:string" />
+          <xs:element name="DiskEnabled" type="xs:boolean" />
+          <xs:element name="DiskName" type="xs:string" />
+          <xs:element name="DiskAutoDownload" type="xs:boolean" />
+          <xs:element name="SoundEnabled" type="xs:boolean" />
+          <xs:element name="SoundQuality" type="ns3:TRdpSoundQuality" />
+          <xs:element name="Users" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ThinRDP.Profiles">
+      <xs:simpleType name="TProfileKind">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="pkRDPProfile" />
+          <xs:enumeration value="pkWebLink" />
+          <xs:enumeration value="pkRdWeb" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ThinRDP.Common">
+      <xs:simpleType name="TRdpCredentials">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="crAuthenticated" />
+          <xs:enumeration value="crAsk" />
+          <xs:enumeration value="crSaved" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TRdpScreenResolution">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="srCustom" />
+          <xs:enumeration value="srFitToBrowser" />
+          <xs:enumeration value="srFitToScreen" />
+          <xs:enumeration value="sr640x480" />
+          <xs:enumeration value="sr800x600" />
+          <xs:enumeration value="sr1024x768" />
+          <xs:enumeration value="sr1280x720" />
+          <xs:enumeration value="sr1280x768" />
+          <xs:enumeration value="sr1280x1024" />
+          <xs:enumeration value="sr1440x900" />
+          <xs:enumeration value="sr1440x1050" />
+          <xs:enumeration value="sr1600x1200" />
+          <xs:enumeration value="sr1680x1050" />
+          <xs:enumeration value="sr1920x1080" />
+          <xs:enumeration value="sr1920x1200" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TRdpScreenBPP">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="bpp8" />
+          <xs:enumeration value="bpp15" />
+          <xs:enumeration value="bpp16" />
+          <xs:enumeration value="bpp24" />
+          <xs:enumeration value="bpp32" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TRdpImageQuality">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="iqHighest" />
+          <xs:enumeration value="iqOptimal" />
+          <xs:enumeration value="iqGood" />
+          <xs:enumeration value="iqFaster" />
+          <xs:enumeration value="iqNative" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TRdpAppMode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="amNone" />
+          <xs:enumeration value="amStartApp" />
+          <xs:enumeration value="amRemoteApp" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TRdpSoundQuality">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="sqExcellent" />
+          <xs:enumeration value="sqOptimal" />
+          <xs:enumeration value="sqGood" />
+          <xs:enumeration value="sqPoor" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="GetAllProfiles0Request" />
+  <message name="GetAllProfiles0Response">
+    <part name="return" type="ns1:WSProfileArray" />
+  </message>
+  <message name="GetProfileCount1Request" />
+  <message name="GetProfileCount1Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetProfile2Request">
+    <part name="Index" type="xs:int" />
+  </message>
+  <message name="GetProfile2Response">
+    <part name="return" type="ns1:WSProfile" />
+  </message>
+  <message name="FindByID3Request">
+    <part name="ID" type="xs:string" />
+  </message>
+  <message name="FindByID3Response">
+    <part name="return" type="ns1:WSProfile" />
+  </message>
+  <message name="FindByComputer4Request">
+    <part name="Computer" type="xs:string" />
+  </message>
+  <message name="FindByComputer4Response">
+    <part name="return" type="ns1:WSProfileArray" />
+  </message>
+  <message name="FindByUserName5Request">
+    <part name="UserName" type="xs:string" />
+  </message>
+  <message name="FindByUserName5Response">
+    <part name="return" type="ns1:WSProfileArray" />
+  </message>
+  <message name="CreateProfile6Request">
+    <part name="Profile" type="ns1:WSProfile" />
+  </message>
+  <message name="CreateProfile6Response">
+    <part name="return" type="ns1:WSProfile" />
+  </message>
+  <message name="DeleteProfile7Request">
+    <part name="ID" type="xs:string" />
+  </message>
+  <message name="DeleteProfile7Response">
+    <part name="return" type="xs:boolean" />
+  </message>
+  <message name="UpdateProfile8Request">
+    <part name="Profile" type="ns1:WSProfile" />
+  </message>
+  <message name="UpdateProfile8Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="NewPublicKey9Request">
+    <part name="ID" type="xs:string" />
+  </message>
+  <message name="NewPublicKey9Response">
+    <part name="return" type="ns1:WSProfile" />
+  </message>
+  <message name="Commit10Request" />
+  <message name="Commit10Response" />
+  <message name="Rollback11Request" />
+  <message name="Rollback11Response" />
+  <portType name="IWSThinRDP">
+    <operation name="GetAllProfiles">
+      <input message="tns:GetAllProfiles0Request" />
+      <output message="tns:GetAllProfiles0Response" />
+    </operation>
+    <operation name="GetProfileCount">
+      <input message="tns:GetProfileCount1Request" />
+      <output message="tns:GetProfileCount1Response" />
+    </operation>
+    <operation name="GetProfile">
+      <input message="tns:GetProfile2Request" />
+      <output message="tns:GetProfile2Response" />
+    </operation>
+    <operation name="FindByID">
+      <input message="tns:FindByID3Request" />
+      <output message="tns:FindByID3Response" />
+    </operation>
+    <operation name="FindByComputer">
+      <input message="tns:FindByComputer4Request" />
+      <output message="tns:FindByComputer4Response" />
+    </operation>
+    <operation name="FindByUserName">
+      <input message="tns:FindByUserName5Request" />
+      <output message="tns:FindByUserName5Response" />
+    </operation>
+    <operation name="CreateProfile">
+      <input message="tns:CreateProfile6Request" />
+      <output message="tns:CreateProfile6Response" />
+    </operation>
+    <operation name="DeleteProfile">
+      <input message="tns:DeleteProfile7Request" />
+      <output message="tns:DeleteProfile7Response" />
+    </operation>
+    <operation name="UpdateProfile">
+      <input message="tns:UpdateProfile8Request" />
+      <output message="tns:UpdateProfile8Response" />
+    </operation>
+    <operation name="NewPublicKey">
+      <input message="tns:NewPublicKey9Request" />
+      <output message="tns:NewPublicKey9Response" />
+    </operation>
+    <operation name="Commit">
+      <input message="tns:Commit10Request" />
+      <output message="tns:Commit10Response" />
+    </operation>
+    <operation name="Rollback">
+      <input message="tns:Rollback11Request" />
+      <output message="tns:Rollback11Response" />
+    </operation>
+  </portType>
+  <binding name="IWSThinRDPbinding" type="tns:IWSThinRDP">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetAllProfiles">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#GetAllProfiles" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetProfileCount">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#GetProfileCount" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetProfile">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#GetProfile" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="FindByID">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#FindByID" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="FindByComputer">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#FindByComputer" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="FindByUserName">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#FindByUserName" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CreateProfile">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#CreateProfile" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="DeleteProfile">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#DeleteProfile" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="UpdateProfile">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#UpdateProfile" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="NewPublicKey">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#NewPublicKey" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Commit">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#Commit" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Rollback">
+      <soap:operation soapAction="urn:ThinRDPWS.Admin.Intf-IWSThinRDP#Rollback" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ThinRDPWS.Admin.Intf-IWSThinRDP" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IWSThinRDPservice">
+    <port name="IWSThinRDPPort" binding="tns:IWSThinRDPbinding">
+      <soap:address location="https://ServerNameOrIp:8444/soap/IWSThinRDP" />
+    </port>
+  </service>
+</definitions>
