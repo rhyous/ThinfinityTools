@@ -12,7 +12,7 @@ namespace ThinfinityTools.ProfileManager
     {
         static void Main(string[] args)
         {
-            ArgsManager.Instance.Start(, args);
+            ArgsManager.Instance.Start(new ArgsHandler(), args);
         }
     }
 }
