@@ -1,10 +1,10 @@
-﻿namespace ThinfinityTools.ProfileManager
-{
-    using System.Collections.Generic;
-    using System.Data;
-    using System.IO;
-    using System.Linq;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
 
+namespace ThinfinityTools.ProfileManager
+{
     public class Csv
     {
         public Csv(string csvPath, bool hasHeaderLine = true)

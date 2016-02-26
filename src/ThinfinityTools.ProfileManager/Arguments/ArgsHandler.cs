@@ -1,7 +1,7 @@
-using SimpleArgs;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using SimpleArgs;
 using ThinfinityTools.Thinfinity.WebApi;
 
 namespace ThinfinityTools.ProfileManager.Arguments

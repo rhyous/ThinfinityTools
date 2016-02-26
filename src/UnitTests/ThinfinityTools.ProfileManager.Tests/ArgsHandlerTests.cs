@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleArgs;
 using ThinfinityTools.ProfileManager.Arguments;
 using ThinfinityTools.Tests.Fakes;
