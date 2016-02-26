@@ -2,23 +2,18 @@ using SimpleArgs;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using ThinfinityTools.Thinfinity.WebApi;
 
 namespace ThinfinityTools.ProfileManager.Arguments
 {
-    // Add this line of code to Main() in Program.cs
-    //
-    //   ArgsManager.Instance.Start(new ArgsHandler(), args);
-    //
-
     /// <summary>
     /// A class that implements IArgumentsHandler where command line
     /// arguments are defined.
     /// </summary>
     public sealed class ArgsHandler : ArgsHandlerBase
     {
+        public override int MinimumRequiredArgs => 1;
+
         public ArgsHandler()
         {
             Arguments = new List<Argument>
@@ -27,57 +22,77 @@ namespace ThinfinityTools.ProfileManager.Arguments
                 {
                     Name = "ShowProfiles",
                     ShortName = "p",
-                    Description = "I show all the profiles",
+                    Description = "Show all profiles.",
                     Example = "/{name}",
-                    Action = (value) =>
-                    {
-                        var repo = new ThinfinityRepository(new ThinfinityService());
-                        var text = Serializer.SerializeToXml(repo.AllProfiles);
-                        var xml = new Xml(text);
-                        Console.Write(xml.PrettyXml);
-                    }
+                    AllowedValues = CommonAllowedValues.TrueFalse,
+                    Action = value => Console.Write(new Xml(Serializer.SerializeToXml(Repo.AllProfiles)).PrettyXml)
                 },
                 new Argument
                 {
                     Name = "AddProfiles",
                     ShortName = "add",
-                    Description = "I add profiles from an xml.",
+                    Description = "Add profiles from an xml.",
                     Example = @"{name}=c:\path\to\profiles.xml",
-                    CustomValidation = (value) => File.Exists(value),
-                    Action = (value) =>
+                    CustomValidation = value => File.Exists(value),
+                    Action = value =>
                     {
-                        var profiles = Serializer.DeserializeFromXml<List<WSProfile>>(value);
-                        var repo = new ThinfinityRepository(new ThinfinityService());
-                        repo.AddProfiles(profiles);
+                        var addedProfiles = Repo.AddProfiles(Serializer.DeserializeFromXml<List<WSProfile>>(value));
+                        var xml = Serializer.SerializeToXml(addedProfiles);
+                        Console.WriteLine("The following profiles were created:{0}{1}", Environment.NewLine, xml);
                     }
                 },
                 new Argument
                 {
                     Name = "DeleteProfile",
                     ShortName = "d",
-                    Description = "I delete a profile.",
+                    Description = "Delete a profile by name.",
                     Example = @"{name}=profile-name",
-                    Action = (value) =>
+                    Action = value => { Console.WriteLine("Deleted {0} profiles.", Repo.DeleteProfile(value)); }
+                },
+                new Argument
+                {
+                    Name = "DeleteAllProfiles",
+                    ShortName = "da",
+                    Description = "Delete all profiles. A an Xml file of all profiles will be created before deletion occurs.",
+                    Example = @"/{name}",
+                    AllowedValues = CommonAllowedValues.TrueFalse,
+                    Action = value =>
                     {
-                        var repo = new ThinfinityRepository(new ThinfinityService());
-                        repo.DeleteProfile(value);
+                        Serializer.SerializeToXml("AllProfiles.xml");
+                        Console.WriteLine("Deleted {0} profiles.", Repo.DeleteAllProfiles());
                     }
                 },
                 new Argument
                 {
                     Name = "ProfileTemplate",
                     ShortName = "t",
-                    Description = "I am a template of a profile.",
+                    Description = "An xml template of a profile.",
                     Example = @"{name}=template.xml",
-                    CustomValidation = (value) => File.Exists(value)
+                    CustomValidation = value => File.Exists(value)
+                },
+                new Argument
+                {
+                    Name = "GenerateTemplate",
+                    ShortName = "gentem",
+                    Description = "Generate an xml template of a profile.",
+                    Example = @"{name}=outputTemplate.xml",
+                    Action = value => Serializer.SerializeToXml(new WSProfile { Name = "Example 1", VirtualPath = "Example 1", Computer = "PC 1" }, value)
                 },
                 new Argument
                 {
                     Name = "ProfileCsv",
                     ShortName = "csv",
-                    Description = "I am a csv file to update a profile created from a template.",
+                    Description = "A csv file to update a profile.",
                     Example = @"{name}=profileSettings.csv",
-                    CustomValidation = (value) => File.Exists(value)
+                    CustomValidation = value => File.Exists(value)
+                },
+                new Argument
+                {
+                    Name = "GenerateCsvTemplate",
+                    ShortName = "gencsv",
+                    Description = "Generate a template of a csv file to update a profile.",
+                    Example = @"{name}=profileSettings.csv",
+                    Action = value => { File.WriteAllLines(value, new SampleCsv().Lines); }
                 }
                 // Add more args here
             };
@@ -86,45 +101,30 @@ namespace ThinfinityTools.ProfileManager.Arguments
         public override void HandleArgs(IReadArgs inArgsHandler)
         {
             Handled = true;
+            AddProfilesFromCsv();
+        }
 
+        public ProfileRepository Repo
+        {
+            get { return _Repo ?? (_Repo = new ProfileRepository(new ProfileService())); }
+            set { _Repo = value; }
+        }
+        private ProfileRepository _Repo;
+
+        public void AddProfilesFromCsv()
+        {
             // Was Csv and Template provided
-            var csv = Args.Value("ProfileCsv");
+            var csvPath = Args.Value("ProfileCsv");
             var tempate = Args.Value("ProfileTemplate");
-            if (!string.IsNullOrWhiteSpace(csv) && !string.IsNullOrWhiteSpace(tempate))
+            if (!string.IsNullOrWhiteSpace(csvPath))
             {
-                // Read CSV
-                var lines = File.ReadAllLines(csv);
-                var headers = new List<string>();
-                var rows = new List<List<string>>();
-                var profiles = new List<WSProfile>();
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        headers.AddRange(lines[i].Split(',').Select(s => s.Trim()));
-                        continue;
-                    }
-                    rows.Add(lines[i].Split(',').Select(s => s.Trim()).ToList());
-                }
-
-                foreach (var row in rows)
-                {
-                    var profile = Serializer.DeserializeFromXml<WSProfile>(tempate);
-                    for (int i = 0; i < headers.Count; i++)
-                    {
-                        var type = profile.GetType();
-                        var prop = type.GetProperty(headers[i]);
-                        prop.SetValue(profile, row[i], null);
-                    }
-                    profiles.Add(profile);
-                }
+                var csv = new Csv(csvPath);
+                var profiles = csv.GetProfiles(tempate);
                 if (profiles.Count > 0)
                 {
-                    var repo = new ThinfinityRepository(new ThinfinityService());
-                    repo.AddProfiles(profiles);
+                    Repo.AddProfiles(profiles);
                 }
             }
-
         }
     }
 }

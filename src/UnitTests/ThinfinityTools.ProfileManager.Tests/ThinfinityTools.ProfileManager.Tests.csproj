@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96E0646D-7BC3-4CCA-9A5E-683DA26B57B8}</ProjectGuid>
+    <ProjectGuid>{6244CC15-FB57-4316-B270-12D9DB546441}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ThinfinityTools.Tests</RootNamespace>
-    <AssemblyName>ThinfinityTools.Tests</AssemblyName>
+    <RootNamespace>ThinfinityTools.ProfileManager.Tests</RootNamespace>
+    <AssemblyName>ThinfinityTools.ProfileManager.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,18 +50,28 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Fakes\FakeProfileService.cs" />
-    <Compile Include="ProfileRepositoryTests.cs" />
+    <Compile Include="ArgsHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ThinfinityTools.ProfileManager\ThinfinityTools.ProfileManager.csproj">
+      <Project>{144112c0-a3e7-4ac5-b15b-004a5b4c74f3}</Project>
+      <Name>ThinfinityTools.ProfileManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ThinfinityTools\ThinfinityTools.csproj">
       <Project>{b8fa8b76-b80f-4fca-b738-9486ec4ffeb4}</Project>
       <Name>ThinfinityTools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ThinfinityTools.Tests\ThinfinityTools.Tests.csproj">
+      <Project>{96e0646d-7bc3-4cca-9a5e-683da26b57b8}</Project>
+      <Name>ThinfinityTools.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="Data\Profiles.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\template.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

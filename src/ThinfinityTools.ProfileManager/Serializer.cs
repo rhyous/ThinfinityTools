@@ -34,6 +34,37 @@ namespace ThinfinityTools.ProfileManager
             return textWriter.ToString();
         }
 
+        public static void SerializeToXml<T>(T t, string outFilename, bool inOmitXmlDeclaration = false, XmlSerializerNamespaces inNameSpaces = null, Encoding inEncoding = null)
+        {
+            MakeDirectoryPath(outFilename);
+            var ns = inNameSpaces;
+            if (ns == null)
+            {
+                ns = new XmlSerializerNamespaces();
+                ns.Add("", "");
+            }
+            var serializer = new XmlSerializer(t.GetType());
+            var textWriter = (TextWriter)new StreamWriter(outFilename);
+            if (inEncoding != null && inEncoding.Equals(Encoding.UTF8))
+                textWriter = new Utf8StreamWriter(outFilename);
+            var xmlWriter = XmlWriter.Create(textWriter, new XmlWriterSettings { OmitXmlDeclaration = inOmitXmlDeclaration });
+            serializer.Serialize(xmlWriter, t, ns);
+            textWriter.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="outFilename"></param>
+        private static void MakeDirectoryPath(string outFilename)
+        {
+            var dir = Path.GetDirectoryName(outFilename);
+            if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+        }
+
         /// <summary>
         /// This function deserializes the XML file passed in.
         /// </summary>
@@ -68,7 +99,7 @@ namespace ThinfinityTools.ProfileManager
         #region UTF8StringWriter
         public sealed class Utf8StringWriter : StringWriter
         {
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
+            public override Encoding Encoding => Encoding.UTF8;
         }
 
         public sealed class Utf8StreamWriter : StreamWriter
@@ -78,7 +109,7 @@ namespace ThinfinityTools.ProfileManager
             {
             }
 
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
+            public override Encoding Encoding => Encoding.UTF8;
         }
         #endregion
     }

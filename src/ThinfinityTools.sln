@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinfinityTools.Tests", "Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinfinityTools.ProfileManager", "ThinfinityTools.ProfileManager\ThinfinityTools.ProfileManager.csproj", "{144112C0-A3E7-4AC5-B15B-004A5B4C74F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinfinityTools.ProfileManager.Tests", "UnitTests\ThinfinityTools.ProfileManager.Tests\ThinfinityTools.ProfileManager.Tests.csproj", "{6244CC15-FB57-4316-B270-12D9DB546441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +31,16 @@ Global
 		{144112C0-A3E7-4AC5-B15B-004A5B4C74F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144112C0-A3E7-4AC5-B15B-004A5B4C74F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{144112C0-A3E7-4AC5-B15B-004A5B4C74F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6244CC15-FB57-4316-B270-12D9DB546441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6244CC15-FB57-4316-B270-12D9DB546441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6244CC15-FB57-4316-B270-12D9DB546441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6244CC15-FB57-4316-B270-12D9DB546441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{96E0646D-7BC3-4CCA-9A5E-683DA26B57B8} = {AC896A40-22E1-475B-BA4C-EAD5901F3628}
+		{6244CC15-FB57-4316-B270-12D9DB546441} = {AC896A40-22E1-475B-BA4C-EAD5901F3628}
 	EndGlobalSection
 EndGlobal

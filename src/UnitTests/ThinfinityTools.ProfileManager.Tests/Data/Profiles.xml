@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWSProfile>
+  <WSProfile>
+    <Name>Example 1</Name>
+    <Enabled>false</Enabled>
+    <Unrestricted>false</Unrestricted>
+    <GuestAllowed>false</GuestAllowed>
+    <IsBuiltIn>false</IsBuiltIn>
+    <VirtualPath>Example 1</VirtualPath>
+    <Kind>pkRDPProfile</Kind>
+    <Computer>PC 1</Computer>
+    <Credentials>crAuthenticated</Credentials>
+    <ScreenResolution>srCustom</ScreenResolution>
+    <ScreenWidth>0</ScreenWidth>
+    <ScreenHeight>0</ScreenHeight>
+    <BPP>bpp8</BPP>
+    <ImageQuality>iqHighest</ImageQuality>
+    <UnicodeKbd>false</UnicodeKbd>
+    <ConsoleSession>false</ConsoleSession>
+    <WebsocketCompression>false</WebsocketCompression>
+    <RelativeMouseTouch>false</RelativeMouseTouch>
+    <KeyboardLayout>0</KeyboardLayout>
+    <DisableNLA>false</DisableNLA>
+    <DragDistance>0</DragDistance>
+    <ShowOnStart>false</ShowOnStart>
+    <PersistentCache>false</PersistentCache>
+    <EnableRemoteFx>false</EnableRemoteFx>
+    <EnableTouchRedirection>false</EnableTouchRedirection>
+    <TouchDragDelay>0</TouchDragDelay>
+    <SaveRDSessions>false</SaveRDSessions>
+    <SmartSizing>false</SmartSizing>
+    <AppMode>amNone</AppMode>
+    <DesktopBackground>false</DesktopBackground>
+    <VisualStyles>false</VisualStyles>
+    <MenuAnimation>false</MenuAnimation>
+    <FontSmoothing>false</FontSmoothing>
+    <ShowWindowOnDrag>false</ShowWindowOnDrag>
+    <DesktopComposition>false</DesktopComposition>
+    <Clipboard>false</Clipboard>
+    <PrinterEnabled>false</PrinterEnabled>
+    <PrinterSetAsDefault>false</PrinterSetAsDefault>
+    <DiskEnabled>false</DiskEnabled>
+    <DiskAutoDownload>false</DiskAutoDownload>
+    <SoundEnabled>false</SoundEnabled>
+    <SoundQuality>sqExcellent</SoundQuality>
+  </WSProfile>
+  <WSProfile>
+    <Name>Example 2</Name>
+    <Enabled>false</Enabled>
+    <Unrestricted>false</Unrestricted>
+    <GuestAllowed>false</GuestAllowed>
+    <IsBuiltIn>false</IsBuiltIn>
+    <VirtualPath>Example 2</VirtualPath>
+    <Kind>pkRDPProfile</Kind>
+    <Computer>PC 2</Computer>
+    <Credentials>crAuthenticated</Credentials>
+    <ScreenResolution>srCustom</ScreenResolution>
+    <ScreenWidth>0</ScreenWidth>
+    <ScreenHeight>0</ScreenHeight>
+    <BPP>bpp8</BPP>
+    <ImageQuality>iqHighest</ImageQuality>
+    <UnicodeKbd>false</UnicodeKbd>
+    <ConsoleSession>false</ConsoleSession>
+    <WebsocketCompression>false</WebsocketCompression>
+    <RelativeMouseTouch>false</RelativeMouseTouch>
+    <KeyboardLayout>0</KeyboardLayout>
+    <DisableNLA>false</DisableNLA>
+    <DragDistance>0</DragDistance>
+    <ShowOnStart>false</ShowOnStart>
+    <PersistentCache>false</PersistentCache>
+    <EnableRemoteFx>false</EnableRemoteFx>
+    <EnableTouchRedirection>false</EnableTouchRedirection>
+    <TouchDragDelay>0</TouchDragDelay>
+    <SaveRDSessions>false</SaveRDSessions>
+    <SmartSizing>false</SmartSizing>
+    <AppMode>amNone</AppMode>
+    <DesktopBackground>false</DesktopBackground>
+    <VisualStyles>false</VisualStyles>
+    <MenuAnimation>false</MenuAnimation>
+    <FontSmoothing>false</FontSmoothing>
+    <ShowWindowOnDrag>false</ShowWindowOnDrag>
+    <DesktopComposition>false</DesktopComposition>
+    <Clipboard>false</Clipboard>
+    <PrinterEnabled>false</PrinterEnabled>
+    <PrinterSetAsDefault>false</PrinterSetAsDefault>
+    <DiskEnabled>false</DiskEnabled>
+    <DiskAutoDownload>false</DiskAutoDownload>
+    <SoundEnabled>false</SoundEnabled>
+    <SoundQuality>sqExcellent</SoundQuality>
+  </WSProfile>
+</ArrayOfWSProfile>

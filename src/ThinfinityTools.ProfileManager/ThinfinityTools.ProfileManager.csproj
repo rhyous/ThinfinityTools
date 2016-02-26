@@ -60,8 +60,11 @@
     <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentList.cs" />
     <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentsHandlerBase.cs" />
     <Compile Include="Arguments\ArgsHandler.cs" />
+    <Compile Include="Csv.cs" />
+    <Compile Include="ProfileBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleCsv.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="Xml.cs" />
   </ItemGroup>

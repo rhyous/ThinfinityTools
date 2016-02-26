@@ -44,16 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
-    <Compile Include="Interface\IThinfinityRepository.cs" />
-    <Compile Include="Interface\IThinfinityService.cs" />
-    <Compile Include="Repository\ThinfinityRepository.cs" />
+    <Compile Include="Interface\IProfileRepository.cs" />
+    <Compile Include="Interface\IProfileService.cs" />
+    <Compile Include="Repository\ProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\Thinfinity.WebApi\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service\ThinfinityService.cs" />
+    <Compile Include="Service\ProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
