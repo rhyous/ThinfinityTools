@@ -43,22 +43,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\Args.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\ArgsHandlerCollection.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\ArgsManager.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\ArgsReader.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\ArgumentMessageBuilder.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Business\CommonAllowedValues.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Extensions\ArgumentExtensions.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Extensions\StringExtensions.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Interfaces\IArgumentMessageBuilder.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Interfaces\IArgumentsHandler.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Interfaces\IReadArgs.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\Argument.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentAddedEventArgs.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentDictionary.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentList.cs" />
-    <Compile Include="App_Packages\SimpleArgs.Sources.1.0.9\Model\ArgumentsHandlerBase.cs" />
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\Args.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\Args.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsHandlerCollection.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsHandlerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsManager.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsReader.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgsReader.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgumentMessageBuilder.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\ArgumentMessageBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Business\CommonAllowedValues.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Business\CommonAllowedValues.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Extensions\ArgumentExtensions.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Extensions\ArgumentExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Extensions\StringExtensions.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Extensions\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IArgumentMessageBuilder.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IArgumentMessageBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IArgumentsHandler.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IArgumentsHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IReadArgs.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Interfaces\IReadArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Model\Argument.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Model\Argument.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentAddedEventArgs.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentAddedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentDictionary.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentList.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentList.cs</Link>
+    </Compile>
+    <Compile Include="..\packages\SimpleArgs.Sources.1.1.0\src\App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentsHandlerBase.cs">
+      <Link>App_Packages\SimpleArgs.Sources.1.1.0\Model\ArgumentsHandlerBase.cs</Link>
+    </Compile>
     <Compile Include="Arguments\ArgsHandler.cs" />
     <Compile Include="Csv.cs" />
     <Compile Include="ProfileBuilder.cs" />
