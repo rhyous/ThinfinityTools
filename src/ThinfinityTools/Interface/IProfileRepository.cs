@@ -3,7 +3,7 @@ using ThinfinityTools.Thinfinity.WebApi;
 
 namespace ThinfinityTools
 {
-    interface IProfileRepository
+    public interface IProfileRepository
     {
         List<WSProfile> AllProfiles { get; }
         List<WSProfile> AddProfiles(IEnumerable<WSProfile> profiles);

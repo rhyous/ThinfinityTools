@@ -104,12 +104,12 @@ namespace ThinfinityTools.ProfileManager.Arguments
             AddProfilesFromCsv();
         }
 
-        public ProfileRepository Repo
+        public IProfileRepository Repo
         {
             get { return _Repo ?? (_Repo = new ProfileRepository(new ProfileService())); }
             set { _Repo = value; }
         }
-        private ProfileRepository _Repo;
+        private IProfileRepository _Repo;
 
         public void AddProfilesFromCsv()
         {
