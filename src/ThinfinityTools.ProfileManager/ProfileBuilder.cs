@@ -11,7 +11,7 @@ namespace ThinfinityTools.ProfileManager
             var profiles = new List<WSProfile>();
             foreach (DataRow row in csv.Table.Rows)
             {
-                var profile = string.IsNullOrWhiteSpace(template)
+                var profile = !string.IsNullOrWhiteSpace(template)
                     ? Serializer.DeserializeFromXml<WSProfile>(template)
                     : new WSProfile();
                 foreach (var header in csv.Headers)
