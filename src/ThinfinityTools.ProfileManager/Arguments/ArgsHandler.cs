@@ -53,7 +53,7 @@ namespace ThinfinityTools.ProfileManager.Arguments
                 {
                     Name = "DeleteAllProfiles",
                     ShortName = "da",
-                    Description = "Delete all profiles. A an Xml file of all profiles will be created before deletion occurs.",
+                    Description = "Delete all profiles. A an Xml of all profiles is saved.",
                     Example = @"/{name}",
                     AllowedValues = CommonAllowedValues.TrueFalse,
                     Action = value =>
@@ -66,7 +66,7 @@ namespace ThinfinityTools.ProfileManager.Arguments
                 {
                     Name = "ProfileTemplate",
                     ShortName = "t",
-                    Description = "An xml template of a profile.",
+                    Description = "An xml template of a profile. Use this with ProfileCsv to set default values.",
                     Example = @"{name}=template.xml",
                     CustomValidation = value => File.Exists(value)
                 },
@@ -82,7 +82,7 @@ namespace ThinfinityTools.ProfileManager.Arguments
                 {
                     Name = "ProfileCsv",
                     ShortName = "csv",
-                    Description = "A csv file to update a profile.",
+                    Description = "A csv file to add a profile. Use with ProfileTemplate.",
                     Example = @"{name}=profileSettings.csv",
                     CustomValidation = value => File.Exists(value)
                 },
