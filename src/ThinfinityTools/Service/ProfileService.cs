@@ -15,7 +15,12 @@ namespace ThinfinityTools
 
         public WSProfile[] AddProfiles(WSProfile[] profiles)
         {
-            var createdProfiles = profiles.Select(wsProfile => Client.CreateProfile(wsProfile)).ToArray();
+            WSProfile[] createdProfiles = new WSProfile[profiles.Length];
+            for (int i = 0; i < profiles.Length; i++)
+            {
+                var wsProfile = profiles[i];
+                createdProfiles[i] = Client.CreateProfile(wsProfile);
+            }
             Client.Commit();
             return createdProfiles;
         }

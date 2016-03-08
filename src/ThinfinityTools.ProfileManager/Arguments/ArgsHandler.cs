@@ -93,6 +93,14 @@ namespace ThinfinityTools.ProfileManager.Arguments
                     Description = "Generate a template of a csv file to update a profile.",
                     Example = @"{name}=profileSettings.csv",
                     Action = value => { File.WriteAllLines(value, new SampleCsv().Lines); }
+                },
+                new Argument
+                {
+                    Name = "Out",
+                    ShortName = "o",
+                    Description = "The name of the output file for profiles added with ProfileCsv. If out=console, it goes to the screen.",
+                    Example = @"{name}=AddedProfiles.xml",
+                    DefaultValue = "AddedProfiles.xml"
                 }
                 // Add more args here
             };
@@ -122,7 +130,16 @@ namespace ThinfinityTools.ProfileManager.Arguments
                 var profiles = csv.GetProfiles(tempate);
                 if (profiles.Count > 0)
                 {
-                    Repo.AddProfiles(profiles);
+                    var addedProfiles = Repo.AddProfiles(profiles);
+                    Console.WriteLine("Added {0} profiles.", addedProfiles.Count);
+                    if (Args.Value("Out").Equals("Console", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        Console.WriteLine(Serializer.SerializeToXml(addedProfiles));
+                    }
+                    else
+                    {
+                        Serializer.SerializeToXml(addedProfiles, Args.Value("Out"));
+                    }
                 }
             }
         }
