@@ -58,7 +58,7 @@ namespace ThinfinityTools.ProfileManager.Arguments
                     AllowedValues = CommonAllowedValues.TrueFalse,
                     Action = value =>
                     {
-                        Serializer.SerializeToXml("AllProfiles.xml");
+                        Serializer.SerializeToXml(Repo.AllProfiles,"AllProfiles.xml");
                         Console.WriteLine("Deleted {0} profiles.", Repo.DeleteAllProfiles());
                     }
                 },
